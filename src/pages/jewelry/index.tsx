@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Hero from '@/components/Hero';
-import { homeAndGarden } from '@/shared/variables/hero';
+import { jewelry } from '@/shared/variables/hero';
 
 export default function Home() {
-  const { title, subtitle, image } = homeAndGarden;
+  const { title, subtitle, image } = jewelry;
 
   return (
     <>
