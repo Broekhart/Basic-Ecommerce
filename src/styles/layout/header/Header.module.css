@@ -3,13 +3,20 @@
   justify-content: space-between;
   align-items: center;
   padding-block: 10px;
+  position: relative;
+  z-index: 3;
 }
 
-.header svg {
-  background-color: black;
+.svg {
+  background-color: var(--black);
   padding: 10px;
   border-radius: 50%;
-  color: white;
+  color: var(--white);
+}
+
+.white {
+  background-color: var(--white);
+  color: var(--black);
 }
 
 @media only screen and (width <= 600px) {
