@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout';
-import { MenuProvider } from '@/components/shared/wrappers/menuProvider';
+import { MenuProvider } from '@/components/shared/wrappers/MenuProvider';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 

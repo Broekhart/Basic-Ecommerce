@@ -1,5 +1,5 @@
 import { menu } from '@/shared/variables/menu';
-import styles from '@/styles/menu/Menu.module.css';
+import styles from '@/styles/layout/menu/Menu.module.css';
 import Link from 'next/link';
 
 const Menu = () => {

@@ -1,5 +1,5 @@
-import { useMenu } from '@/components/shared/wrappers/menuProvider';
-import styles from '@/styles/header/Header.module.css';
+import { useMenu } from '@/components/shared/wrappers/MenuProvider';
+import styles from '@/styles/layout/header/Header.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
