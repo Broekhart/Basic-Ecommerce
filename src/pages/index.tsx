@@ -1,9 +1,19 @@
 import Head from 'next/head';
 import Hero from '@/components/Hero';
-import { homeAndGarden } from '@/shared/variables/hero';
+import { jewelry } from '@/shared/variables/hero';
+import { GetStaticProps } from 'next';
+import { CollectionResponse } from '@/shared/types/collections';
+import fetcher from '@/shared/functions/fetcher';
+import { Product as ProductType, ProductResponse } from '@/shared/types/products';
+import productsByType from '@/shared/functions/productsByType';
+import Products from '@/components/Products';
 
-export default function Home() {
-  const { title, subtitle, image } = homeAndGarden;
+type Props = {
+  filteredProducts: Record<string, ProductType[]>;
+};
+
+export default function Home({ filteredProducts }: Props) {
+  const { title, subtitle, image } = jewelry;
 
   return (
     <>
@@ -14,6 +24,28 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Hero title={title} subtitle={subtitle} image={image} />
+      <section className='responsive_width' style={{ paddingBlock: '40px' }}>
+        {Object.entries(filteredProducts).map(([key, products]) => (
+          <Products key={key} products={products} />
+        ))}
+      </section>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const collections = await fetcher<CollectionResponse>('/collection_listings.json');
+  const [, , jewlery] = collections.collection_listings;
+  const { collection_id } = jewlery;
+
+  const { products } = await fetcher<ProductResponse>(`/collections/${collection_id}/products.json`);
+  const uniqueTypes = [...new Set(products.map((product) => product.product_type))];
+
+  const filteredProducts = productsByType(products, uniqueTypes);
+
+  return {
+    props: {
+      filteredProducts,
+    },
+  };
+};
