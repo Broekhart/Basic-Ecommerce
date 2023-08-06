@@ -1,5 +1,3 @@
-import { BASE_URL } from '../variables/URLs';
-
 const cacheData: Map<string, { data: any; timestamp: number }> = new Map();
 const cacheTimeout = 10 * 60 * 1000;
 
@@ -11,7 +9,7 @@ const fetcher = async <T>(path: string, options: RequestInit = {}): Promise<T> =
   }
 
   try {
-    const url = `${BASE_URL}${path}`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_URL}${path}`;
     const response = await fetch(url, options);
 
     if (!response.ok) {
