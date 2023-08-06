@@ -1,12 +1,4 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useState,
-  useContext,
-  SetStateAction,
-  Dispatch,
-  useEffect,
-} from 'react';
+import { PropsWithChildren, createContext, useState, useContext, SetStateAction, Dispatch } from 'react';
 
 interface MenuContextType {
   isMenu: boolean;
