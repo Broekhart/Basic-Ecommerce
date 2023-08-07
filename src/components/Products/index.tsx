@@ -9,7 +9,7 @@ type Props = {
 };
 
 const Products: FC<Props> = ({ products }) => {
-  const splicedProducts = products.slice(0, 10);
+  const slicedProducts = products.slice(0, 10);
   return (
     <section>
       <div className='between_center'>
@@ -19,7 +19,7 @@ const Products: FC<Props> = ({ products }) => {
         </Link>
       </div>
       <div className={styles.products}>
-        {splicedProducts.map((product) => (
+        {slicedProducts.map((product) => (
           <Product key={product.id} product={product} />
         ))}
       </div>

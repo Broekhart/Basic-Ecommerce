@@ -6,6 +6,7 @@ import { CollectionResponse } from '@/shared/types/collections';
 import { Product as ProductType, ProductResponse } from '@/shared/types/products';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import getProducts from '@/shared/functions/getProducts';
 
 type Props = {
   filteredProducts: ProductType[];
@@ -39,11 +40,7 @@ export default function Category({ filteredProducts }: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const collections = await fetcher<CollectionResponse>('/collection_listings.json');
-  const [, , jewlery] = collections.collection_listings;
-  const { collection_id } = jewlery;
-
-  const { products } = await fetcher<ProductResponse>(`/collections/${collection_id}/products.json`);
+  const products = await getProducts();
   const uniqueTypes = [...new Set(products.map((product) => product.product_type))];
 
   const paths = uniqueTypes.map((type) => {
@@ -59,11 +56,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const collections = await fetcher<CollectionResponse>('/collection_listings.json');
-  const [, , jewlery] = collections.collection_listings;
-  const { collection_id } = jewlery;
-
-  const { products } = await fetcher<ProductResponse>(`/collections/${collection_id}/products.json`);
+  const products = await getProducts();
 
   const filteredProducts = products.filter((product) => product.product_type.toLowerCase() === params?.name);
 
