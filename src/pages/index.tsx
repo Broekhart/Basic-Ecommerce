@@ -7,6 +7,7 @@ import fetcher from '@/shared/functions/fetcher';
 import { Product as ProductType, ProductResponse } from '@/shared/types/products';
 import productsByType from '@/shared/functions/productsByType';
 import Products from '@/components/Products';
+import getProducts from '@/shared/functions/getProducts';
 
 type Props = {
   filteredProducts: Record<string, ProductType[]>;
@@ -34,11 +35,7 @@ export default function Home({ filteredProducts }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const collections = await fetcher<CollectionResponse>('/collection_listings.json');
-  const [, , jewlery] = collections.collection_listings;
-  const { collection_id } = jewlery;
-
-  const { products } = await fetcher<ProductResponse>(`/collections/${collection_id}/products.json`);
+  const products = await getProducts();
   const uniqueTypes = [...new Set(products.map((product) => product.product_type))];
 
   const filteredProducts = productsByType(products, uniqueTypes);

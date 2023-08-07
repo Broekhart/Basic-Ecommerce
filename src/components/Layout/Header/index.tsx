@@ -3,7 +3,7 @@ import styles from '@/styles/layout/header/Header.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { HiMenuAlt1 } from 'react-icons/hi';
+import { HiMenuAlt1, HiShoppingCart } from 'react-icons/hi';
 
 const Header = () => {
   const { isMenu, setIsMenu } = useMenu();
@@ -23,10 +23,16 @@ const Header = () => {
           src={isMenu ? '/white_logo.svg' : '/logo.svg'}
         />
       </Link>
-      <HiMenuAlt1
-        className={isMenu ? `${styles.svg} ${styles.white}` : styles.svg}
-        onClick={() => setIsMenu((prev) => !prev)}
-      />
+      <div className='flex' style={{ gap: '20px' }}>
+        <HiMenuAlt1
+          className={isMenu ? `${styles.svg} ${styles.white}` : styles.svg}
+          onClick={() => setIsMenu((prev) => !prev)}
+        />
+        <HiShoppingCart
+          className={isMenu ? `${styles.svg} ${styles.white}` : styles.svg}
+          onClick={() => setIsMenu((prev) => !prev)}
+        />
+      </div>
     </header>
   );
 };
