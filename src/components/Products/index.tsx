@@ -9,7 +9,7 @@ type Props = {
 };
 
 const Products: FC<Props> = ({ products }) => {
-  const slicedProducts = products.slice(0, 10);
+  const slicedProducts = products.slice(0, 5);
   return (
     <section>
       <div className='between_center'>
