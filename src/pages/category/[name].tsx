@@ -41,7 +41,7 @@ export default function Category({ filteredProducts }: Props) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const products = await getProducts();
-  const uniqueTypes = [...new Set(products.map((product) => product.product_type))];
+  const uniqueTypes = [...new Set(products.map((product) => product.product_type.toLowerCase()))];
 
   const paths = uniqueTypes.map((type) => {
     return {
