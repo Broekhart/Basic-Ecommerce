@@ -15,6 +15,7 @@ type Props = {
 
 export default function Home({ filteredProducts }: Props) {
   const { title, subtitle, image } = jewelry;
+  const productsEntries = Object.entries(filteredProducts);
 
   return (
     <>
@@ -26,7 +27,7 @@ export default function Home({ filteredProducts }: Props) {
       </Head>
       <Hero title={title} subtitle={subtitle} image={image} />
       <section className='responsive_width' style={{ paddingBlock: '40px' }}>
-        {Object.entries(filteredProducts).map(([key, products]) => (
+        {productsEntries.map(([key, products]) => (
           <Products key={key} products={products} />
         ))}
       </section>

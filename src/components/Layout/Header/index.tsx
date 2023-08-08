@@ -28,10 +28,7 @@ const Header = () => {
           className={isMenu ? `${styles.svg} ${styles.white}` : styles.svg}
           onClick={() => setIsMenu((prev) => !prev)}
         />
-        <HiShoppingCart
-          className={isMenu ? `${styles.svg} ${styles.white}` : styles.svg}
-          onClick={() => setIsMenu((prev) => !prev)}
-        />
+        <HiShoppingCart className={isMenu ? `${styles.svg} ${styles.white}` : styles.svg} />
       </div>
     </header>
   );
