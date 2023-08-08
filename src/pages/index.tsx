@@ -1,12 +1,10 @@
 import Head from 'next/head';
-import Hero from '@/components/Hero';
+import Hero from '@/components/home/Hero';
 import { jewelry } from '@/shared/variables/hero';
 import { GetStaticProps } from 'next';
-import { CollectionResponse } from '@/shared/types/collections';
-import fetcher from '@/shared/functions/fetcher';
-import { Product as ProductType, ProductResponse } from '@/shared/types/products';
+import { Product as ProductType } from '@/shared/types/products';
 import productsByType from '@/shared/functions/productsByType';
-import Products from '@/components/Products';
+import Products from '@/components/home/Products';
 import getProducts from '@/shared/functions/getProducts';
 
 type Props = {
