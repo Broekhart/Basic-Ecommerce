@@ -1,0 +1,38 @@
+.product_grid {
+  padding-block: 30px 70px;
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  gap: 30px;
+}
+
+.variants {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.breadcrumb {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+}
+
+@media only screen and (width <= 600px) {
+  .product_grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product_grid :last-child {
+    order: 3;
+  }
+
+  .variants {
+    flex-direction: row;
+    order: 2;
+  }
+
+  .variants img {
+    flex: 1;
+    max-width: 180px;
+  }
+}

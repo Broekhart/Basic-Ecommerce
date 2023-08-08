@@ -3,6 +3,11 @@ import getProducts from '@/shared/functions/getProducts';
 import { Product, ProductResponse } from '@/shared/types/product';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import styles from '@/styles/product/Product.module.css';
+import VariantImages from '@/components/product/VariantImages';
+import SelectedImage from '@/components/product/SelectedImage';
+import { useState } from 'react';
+import ProductContent from '@/components/product/ProductContent';
 
 type Props = {
   product: Product;
@@ -10,6 +15,7 @@ type Props = {
 
 export default function Product({ product }: Props) {
   const title = `Gioielleria - ${product.title}`;
+  const [selectedImage, setSelectedImage] = useState(product.image.src);
 
   return (
     <>
@@ -19,8 +25,14 @@ export default function Product({ product }: Props) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main className='responsive_width'>
-        <h2>{product.title}</h2>
+      <main className={`responsive_width ${styles.product_grid}`}>
+        <VariantImages
+          images={product.images}
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+        />
+        <SelectedImage image={selectedImage} />
+        <ProductContent product={product} />
       </main>
     </>
   );
