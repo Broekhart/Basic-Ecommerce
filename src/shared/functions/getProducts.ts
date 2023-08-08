@@ -1,5 +1,5 @@
 import { CollectionResponse } from '../types/collections';
-import { ProductResponse } from '../types/products';
+import { ProductsResponse } from '../types/products';
 import fetcher from './fetcher';
 
 const getProducts = async () => {
@@ -7,7 +7,7 @@ const getProducts = async () => {
   const [, , jewlery] = collections.collection_listings;
   const { collection_id } = jewlery;
 
-  const { products } = await fetcher<ProductResponse>(`/collections/${collection_id}/products.json`);
+  const { products } = await fetcher<ProductsResponse>(`/collections/${collection_id}/products.json`);
 
   return products;
 };
