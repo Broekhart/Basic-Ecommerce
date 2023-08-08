@@ -22,6 +22,7 @@ export interface Product {
   images?: ImagesEntityOrImage[] | null;
   image: ImagesEntityOrImage;
 }
+
 export interface VariantsEntity {
   id: number;
   product_id: number;
