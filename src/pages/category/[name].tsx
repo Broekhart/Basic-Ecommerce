@@ -5,14 +5,27 @@ import { Product as ProductType } from '@/shared/types/products';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import getProducts from '@/shared/functions/getProducts';
+import { useState } from 'react';
+import FILTERS from '@/shared/variables/filters';
+import sortProducts from '@/shared/functions/sortProducts';
+import Filter from '@/components/category/Filter';
 
 type Props = {
-  filteredProducts: ProductType[];
+  categoryProducts: ProductType[];
 };
 
-export default function Category({ filteredProducts }: Props) {
-  const category = filteredProducts[0].product_type;
+export default function Category({ categoryProducts }: Props) {
+  const category = categoryProducts[0].product_type;
   const title = `Gioielleria - ${category}`;
+
+  const [activeFilter, setActiveFilter] = useState(FILTERS.default);
+  const [filteredProducts, setFilteredProducts] = useState(categoryProducts);
+
+  const handleFilter = (filter: string) => {
+    if (activeFilter === filter) return;
+    setActiveFilter(filter);
+    setFilteredProducts(sortProducts(categoryProducts, filter));
+  };
 
   return (
     <>
@@ -24,14 +37,12 @@ export default function Category({ filteredProducts }: Props) {
       </Head>
       <main className='responsive_width' style={{ paddingBlock: '20px' }}>
         <h2>{category}</h2>
-        <div className={styles.filter}>
-          <ins>Filtra e ordina</ins>
-        </div>
-        <div className={productStyles.products}>
+        <Filter activeFilter={activeFilter} handleFilter={handleFilter} />
+        <section className={productStyles.products}>
           {filteredProducts.map((product) => (
             <Product key={product.id} product={product} />
           ))}
-        </div>
+        </section>
       </main>
     </>
   );
@@ -56,11 +67,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const products = await getProducts();
 
-  const filteredProducts = products.filter((product) => product.product_type.toLowerCase() === params?.name);
+  const categoryProducts = products.filter((product) => product.product_type.toLowerCase() === params?.name);
 
   return {
     props: {
-      filteredProducts,
+      categoryProducts,
     },
   };
 };
