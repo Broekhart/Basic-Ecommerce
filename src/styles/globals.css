@@ -3,6 +3,7 @@
   --black: black;
   --error: #f44336;
   --success: #3c763d;
+  --grey: rgba(0, 0, 0, 0.7);
   --desktop_header_height: 104px;
   --mobile_header_height: 80px;
   --inline_padding: clamp(1.5rem, 0.9375rem + 1.6667vw, 2.7rem);
