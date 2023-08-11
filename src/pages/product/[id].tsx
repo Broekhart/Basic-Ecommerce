@@ -8,6 +8,7 @@ import VariantImages from '@/components/product/VariantImages';
 import SelectedImage from '@/components/product/SelectedImage';
 import { useState } from 'react';
 import ProductContent from '@/components/product/ProductContent';
+import defaultVariant from '@/shared/variables/defaultVariant';
 
 type Props = {
   product: Product;
@@ -15,7 +16,10 @@ type Props = {
 
 export default function Product({ product }: Props) {
   const title = `Gioielleria - ${product.title}`;
+  const initialVariantState = product.variants ? product.variants[0] : defaultVariant;
+
   const [selectedImage, setSelectedImage] = useState(product.image.src);
+  const [selectedVariant, setSelectedVariant] = useState(initialVariantState);
 
   return (
     <>
@@ -32,7 +36,11 @@ export default function Product({ product }: Props) {
           setSelectedImage={setSelectedImage}
         />
         <SelectedImage image={selectedImage} />
-        <ProductContent product={product} />
+        <ProductContent
+          product={product}
+          selectedVariant={selectedVariant}
+          setSelectedVariant={setSelectedVariant}
+        />
       </main>
     </>
   );
