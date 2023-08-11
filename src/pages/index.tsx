@@ -1,12 +1,10 @@
 import Head from 'next/head';
-import Hero from '@/components/Hero';
+import Hero from '@/components/home/Hero';
 import { jewelry } from '@/shared/variables/hero';
 import { GetStaticProps } from 'next';
-import { CollectionResponse } from '@/shared/types/collections';
-import fetcher from '@/shared/functions/fetcher';
-import { Product as ProductType, ProductResponse } from '@/shared/types/products';
+import { Product as ProductType } from '@/shared/types/products';
 import productsByType from '@/shared/functions/productsByType';
-import Products from '@/components/Products';
+import Products from '@/components/home/Products';
 import getProducts from '@/shared/functions/getProducts';
 
 type Props = {
@@ -15,6 +13,7 @@ type Props = {
 
 export default function Home({ filteredProducts }: Props) {
   const { title, subtitle, image } = jewelry;
+  const productsEntries = Object.entries(filteredProducts);
 
   return (
     <>
@@ -26,7 +25,7 @@ export default function Home({ filteredProducts }: Props) {
       </Head>
       <Hero title={title} subtitle={subtitle} image={image} />
       <section className='responsive_width' style={{ paddingBlock: '40px' }}>
-        {Object.entries(filteredProducts).map(([key, products]) => (
+        {productsEntries.map(([key, products]) => (
           <Products key={key} products={products} />
         ))}
       </section>

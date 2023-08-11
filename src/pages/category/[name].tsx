@@ -1,9 +1,7 @@
-import Product from '@/components/Products/Product';
+import Product from '@/components/home/Products/Product';
 import productStyles from '@/styles/products/Products.module.css';
 import styles from '@/styles/category/Category.module.css';
-import fetcher from '@/shared/functions/fetcher';
-import { CollectionResponse } from '@/shared/types/collections';
-import { Product as ProductType, ProductResponse } from '@/shared/types/products';
+import { Product as ProductType } from '@/shared/types/products';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import getProducts from '@/shared/functions/getProducts';
@@ -24,7 +22,7 @@ export default function Category({ filteredProducts }: Props) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main className='responsive_width'>
+      <main className='responsive_width' style={{ paddingBlock: '20px' }}>
         <h2>{category}</h2>
         <div className={styles.filter}>
           <ins>Filtra e ordina</ins>
