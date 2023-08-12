@@ -1,0 +1,24 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  background-color: var(--black);
+  color: white;
+  z-index: 2;
+  clip-path: circle(71.5% at 50% 50%);
+  animation: 0.3s show_up linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu nav {
+  font-size: 40px;
+  text-transform: uppercase;
+  gap: 20px;
+}
+
+@keyframes show_up {
+  0% {
+    clip-path: circle(8.5% at 98% 3%);
+  }
+}

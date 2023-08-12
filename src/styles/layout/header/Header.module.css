@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 10px;
+  position: relative;
+  z-index: 3;
+}
+
+.svg {
+  background-color: var(--black);
+  padding: 10px;
+  border-radius: 50%;
+  color: var(--white);
+}
+
+.white {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+@media only screen and (width <= 600px) {
+  .logo {
+    height: 60px;
+    width: 60px;
+  }
+}
