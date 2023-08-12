@@ -1,7 +1,24 @@
 .filter {
   margin-block: 10px 40px;
+  gap: 10px;
 }
 
-.filter ins {
+.filter * {
   cursor: pointer;
+}
+
+.filter p {
+  font-size: 20px;
+  position: relative;
+}
+
+.filter p:not(p:last-child):after {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: 10px;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: var(--grey);
 }
