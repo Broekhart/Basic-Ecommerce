@@ -1,6 +1,5 @@
 import Product from '@/components/home/Products/Product';
 import productStyles from '@/styles/products/Products.module.css';
-import styles from '@/styles/category/Category.module.css';
 import { Product as ProductType } from '@/shared/types/products';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
@@ -9,6 +8,8 @@ import { useState } from 'react';
 import FILTERS from '@/shared/variables/filters';
 import sortProducts from '@/shared/functions/sortProducts';
 import Filter from '@/components/category/Filter';
+import usePagination from '@/components/shared/hooks/usePagination';
+import PaginationButtons from '@/components/category/PaginationButtons';
 
 type Props = {
   categoryProducts: ProductType[];
@@ -20,6 +21,10 @@ export default function Category({ categoryProducts }: Props) {
 
   const [activeFilter, setActiveFilter] = useState(FILTERS.default);
   const [filteredProducts, setFilteredProducts] = useState(categoryProducts);
+
+  const { pageState, indexes } = usePagination(filteredProducts, 4);
+  const { indexOfFirst, indexOfLast } = indexes;
+  const paginatedProducts = filteredProducts.slice(indexOfFirst, indexOfLast);
 
   const handleFilter = (filter: string) => {
     if (activeFilter === filter) return;
@@ -35,14 +40,15 @@ export default function Category({ categoryProducts }: Props) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main className='responsive_width' style={{ paddingBlock: '20px' }}>
+      <main className='responsive_width' style={{ paddingBlock: '20px 50px' }}>
         <h2>{category}</h2>
         <Filter activeFilter={activeFilter} handleFilter={handleFilter} />
         <section className={productStyles.products}>
-          {filteredProducts.map((product) => (
+          {paginatedProducts.map((product) => (
             <Product key={product.id} product={product} />
           ))}
         </section>
+        <PaginationButtons pageState={pageState} />
       </main>
     </>
   );
