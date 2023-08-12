@@ -22,3 +22,21 @@
   border-radius: 50%;
   background-color: var(--grey);
 }
+
+.pagination {
+  gap: 15px;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+.pagination button {
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  color: var(--black);
+  padding: 10px 20px;
+}
+
+.pagination button.selected {
+  background-color: var(--black);
+  color: var(--white);
+}
