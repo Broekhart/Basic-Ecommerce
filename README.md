@@ -1,38 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Applicazione Next.js
 
-## Getting Started
+Benvenuto nella mia applicazione Basic E-commerce con Next.js! Questo progetto è un esempio di base di come creare un'app e-commerce utilizzando Next.js, un framework React per il rendering del lato server.
 
-First, run the development server:
+## Prerequisiti
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+Assicurati di avere installato Node.js sul tuo sistema. Puoi scaricarlo e installarlo dal sito ufficiale: [Node.js](https://nodejs.org/)
+
+## Installazione
+
+1. Clona questo repository sul tuo computer utilizzando il comando:
+
+```
+git clone https://github.com/tuonome/app-nextjs.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Dopo aver clonato il repository, spostati nella directory del progetto utilizzando il comando:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+cd app-nextjs
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. Ora, installa le dipendenze necessarie eseguendo il comando:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Utilizzo
 
-## Learn More
+Per avviare l'applicazione in modalità sviluppo, esegui il seguente comando:
 
-To learn more about Next.js, take a look at the following resources:
+```
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Questo avvierà il server di sviluppo Next.js e renderà l'app accessibile tramite il tuo browser all'indirizzo [http://localhost:3000](http://localhost:3000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Struttura del Progetto
 
-## Deploy on Vercel
+La struttura principale del progetto è organizzata in questo modo:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `pages`: In questa cartella troverai i file corrispondenti alle diverse pagine dell'app. Ogni file in questa cartella rappresenta una rotta dell'applicazione.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  - `api`: Questa cartella contiene le routes API create da Next.js. Per questo progetto specifico non sono state create.
+  - `category`: Questo cartella contiene la pagina che renderizza la lista dei prodotti divisi per categoria.
+  - `product`: Questa cartella contiene la pagina che mostra la pagina di dettaglio dei prodotti.
+  - `_app.tsx`: Questo file è il componente Next.js che inizializza l'applicazione. L'ho customizzata per renderizzare componenti comuni a tutte le pagine.
+  - `_document.tsx`: Questo file è il componente Next.js che permette di editare i tags in comune a tutte le pagine.
+  - `index.tsx`: Questo file rappresenza la home dell'applicazione.
+
+- `components`: Questa cartella contiene tutti i componenti utilizzati all'interno delle pagine.
+
+- `styles`: Questa cartella contiene i file di stile per personalizzare l'aspetto dell'applicazione.
+
+- `shared`: Questa cartella contiene i file condivisi da tutte le altre cartelle, come per esempio variabili e funzioni.
