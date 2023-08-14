@@ -11,7 +11,7 @@ Assicurati di avere installato Node.js sul tuo sistema. Puoi scaricarlo e instal
 1. Clona questo repository sul tuo computer utilizzando il comando:
 
 ```
-git clone https://github.com/tuonome/app-nextjs.git
+git clone https://github.com/Broekhart/Basic-Ecommerce.git
 ```
 
 2. Dopo aver clonato il repository, spostati nella directory del progetto utilizzando il comando:
